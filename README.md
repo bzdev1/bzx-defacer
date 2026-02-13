@@ -71,8 +71,8 @@ Dengan menggunakan tool ini, lu dianggap udah baca, paham, dan siap masuk penjar
 
 ```bash
 # Clone repo dulu
-git clone https://github.com/bzdev1/deface-bzx.git
-cd deface-bzx
+git clone https://github.com/bzdev1/bzx-defacer.git
+cd bzx-defacer
 
 # Install dependencies
 pip install -r requirements.txt
@@ -99,8 +99,8 @@ python3 bzxdefacer.py
 ```bash
 pkg update && pkg upgrade -y
 pkg install python git -y
-git clone https://github.com/bzdev1/deface-bzx.git
-cd deface-bzx
+git clone https://github.com/bzdev1/bzx-defacer.git
+cd bzx-defacer
 pip install -r requirements.txt
 python bzxdefacer.py
 ```
@@ -111,8 +111,8 @@ python bzxdefacer.py
 # SSH ke VPS
 apt update && apt upgrade -y
 apt install python3 python3-pip git -y
-git clone https://github.com/bzdev1/deface-bzx.git
-cd deface-bzx
+git clone https://github.com/bzdev1/defacer-bzx.git
+cd bzx-defacer
 pip3 install -r requirements.txt
 python3 bzxdefacer.py
 
