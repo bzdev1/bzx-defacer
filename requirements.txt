@@ -1,0 +1,31 @@
+# BzxDefacer - Mass Defacer Auto Proxy Edition
+# Dependencies wajib biar tool jalan mulus
+# Author: bzdev1 | https://github.com/bzdev1/deface-bzx
+
+# HTTP requests library - buat request ke target & proxy sources
+requests>=2.28.0
+
+# Fake User-Agent generator - biar gak ketahuan bot
+fake-useragent>=1.4.0
+
+# Cross-platform colored output - biar tampilan keren di Windows/Linux/Termux
+colorama>=0.4.6
+
+# ASCII banner generator - buat tampilin logo Bzx keren
+pyfiglet>=0.8.post1
+
+# SSL verification bypass - biar gak error pas request ke site pake sertifikat expired
+urllib3>=1.26.0
+
+# Thread pool executor - buat multi-threading proxy fetching
+# (udah include di Python 3.2+, tapi tetep kita tulis buat jaga-jaga)
+# concurrent.futures - built-in module
+
+# JSON parser - buat parsing response dari proxy API
+# (built-in module)
+
+# Regex - buat extract IP:port dari proxy list
+# (built-in module - re)
+
+# Base64 - buat encoding HTML pas upload via webshell
+# (built-in module - base64)

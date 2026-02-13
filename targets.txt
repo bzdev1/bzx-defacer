@@ -1,0 +1,12 @@
+# LU HARUS buat sendiri file ini!
+# Isi: daftar website target (satu per baris)
+
+Contoh isi targets.txt:
+http://.com
+http://situs2.com
+http://situs3.com:8080
+https://target.com
+
+Cara buat:
+nano targets.txt
+# Ketik target2 lu, Ctrl+X, Y, Enter
