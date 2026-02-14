@@ -1,12 +1,11 @@
-# LU HARUS buat sendiri file ini!
-# Isi: daftar website target (satu per baris)
+# Contoh target buat testing
+# Hapus atau ganti sesuai kebutuhan
 
-Contoh isi targets.txt:
-http://.com
-http://situs2.com
-http://situs3.com:8080
-https://target.com
+http://localhost:8080
+http://testsite.com
+https://example.com
+http://vulnweb.com
+http://127.0.0.1
 
-Cara buat:
-nano targets.txt
-# Ketik target2 lu, Ctrl+X, Y, Enter
+# Format: http://domain.com atau https://domain.com
+# Satu target per baris

